@@ -15,6 +15,7 @@ const schema = z.object({
   ADMIN_USER_IDS: z.string().default('').transform(v => v.split(',').map(x => x.trim()).filter(Boolean)),
   WEBHOOK_URL: z.string().optional(),
   WEBHOOK_SECRET: z.string().optional(),
+  BOT_MODE: z.enum(['polling', 'webhook']).default('polling'),
   BOT_USERNAME: z.string().default('fomo_ai_bot'),
   LOG_LEVEL: z.string().default('info')
 });

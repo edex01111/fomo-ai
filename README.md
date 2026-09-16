@@ -44,13 +44,15 @@ See `.env.example`. The important values are:
 | `ADMIN_USER_IDS` | Comma-separated Telegram administrator IDs. |
 | `WEBHOOK_URL` | Public HTTPS base URL used for Telegram webhook registration. |
 | `WEBHOOK_SECRET` | Secret token for Telegram webhook verification. |
+| `BOT_MODE` | `polling` for local testing; `webhook` for production deployment. |
 
 ## Telegram setup
 
 1. Create a bot with BotFather and place the token in `BOT_TOKEN`.
 2. Set `BOT_USERNAME` to the bot username without `@`.
-3. For production, expose the service over HTTPS and configure Telegram to call `POST /telegram/webhook` with the secret token configured in `WEBHOOK_SECRET`.
-4. Use `/start` or `/menu` to open the dashboard.
+3. For local testing, leave `BOT_MODE=polling`. The process will receive updates directly from Telegram, so no public URL is required. Only run one polling instance for a bot token.
+4. For production, set `BOT_MODE=webhook`, expose the service over HTTPS, and configure Telegram to call `POST /telegram/webhook` with the secret token configured in `WEBHOOK_SECRET`.
+5. Use `/start` or `/menu` to open the dashboard.
 
 Implemented commands: `/start`, `/help`, `/menu`, `/wallet`, `/discover`, `/buy`, `/sell`, `/positions`, `/history`, `/settings`, and `/referral`.
 
