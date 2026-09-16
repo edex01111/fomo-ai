@@ -1,0 +1,32 @@
+{
+  "name": "fomo-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Provider-agnostic Telegram crypto discovery and portfolio bot",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "db:migrate": "tsx src/database/migrate.ts",
+    "check": "npm run build && npm test"
+  },
+  "dependencies": {
+    "@fastify/helmet": "^13.0.0",
+    "@fastify/rate-limit": "^10.2.1",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "grammy": "^1.35.0",
+    "pg": "^8.13.1",
+    "pino": "^9.6.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/pg": "^8.11.11",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  }
+}
